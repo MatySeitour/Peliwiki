@@ -1,0 +1,15 @@
+.nav-container{
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.icon-bar, .icon-search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 26px;
+    fill: white;
+}
