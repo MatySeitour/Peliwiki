@@ -1,0 +1,25 @@
+.category-title__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    color: white;
+}
+
+.category-title__container b{
+    color: #AA0000;
+}
+
+.category-title__container a{
+    font-size: 1rem;
+    letter-spacing: 2px;
+    font-weight: bolder;
+    text-decoration: none;
+    color: white;
+}
+
+.category-title{
+    font-size: 1.8rem;
+    font-weight: bolder;
+    letter-spacing: 2px;
+}

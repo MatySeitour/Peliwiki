@@ -1,0 +1,27 @@
+.trends-img__container{
+    position: relative;
+    margin-bottom: 10px;
+    width: 250px;
+    height: 360px;
+    background-color: #F09D9D;
+    overflow: hidden;
+}
+
+.trends-img{
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+
+}
+
+.trends-img__hover{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: background-color .5s ease;
+}
+
+.trends-img__container:hover > .trends-img__hover{
+    background-color: #000a;
+
+}

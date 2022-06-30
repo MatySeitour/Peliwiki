@@ -1,0 +1,13 @@
+.trends-movies__container{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.trends-movies__title{
+    color: white;
+    text-align: center;
+    padding: 0 50px;
+}

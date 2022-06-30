@@ -1,0 +1,15 @@
+.category-movie__container{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    height: 250px;
+    padding-top: 46px;
+}
+
+.category-movie{
+    width: 150px;
+    height: 200px;
+    background-color: #A2EEE5;
+    margin: 0 20px;
+    display: inline-block;
+}

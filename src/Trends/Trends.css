@@ -1,0 +1,16 @@
+.trends{
+    width: 100%;
+    height: auto;
+}
+
+.trends-title{
+    margin-left: 20px;
+    font-size: 2rem;
+    color: white;
+    letter-spacing: 2px;
+    font-weight: bolder;
+}
+
+.trends-title b{
+    color: #aa0000;
+}
