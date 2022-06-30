@@ -6,16 +6,41 @@ import { Logo } from "../Logo";
 import { NavSearch } from "./NavSearch";
 
 function Nav() {
-    const [navState, setNavState] = React.useState(false);
+    const [state, setState] = React.useState({
+        nav: false,
+        search: false,
+    })
 
     const navActive = () => {
-        if (navState === true) {
-            setNavState(false)
-            document.querySelector("#root").style.background = "#fff"
+        if (state.nav === true) {
+            setState({
+                ...state,
+                nav: false,
+            })
         }
         else {
-            setNavState(true)
-            document.querySelector("#root").style.background = "#0007"
+            setState({
+                ...state,
+                nav: true,
+            })
+        }
+    }
+
+
+    const searchActive = () => {
+        if (!state.nav) {
+            if (state.search === false) {
+                setState({
+                    ...state,
+                    search: true,
+                })
+            }
+            else {
+                setState({
+                    ...state,
+                    search: false,
+                })
+            }
         }
     }
 
@@ -24,10 +49,11 @@ function Nav() {
             <NavMobile>
                 <NavBar
                     navActive={navActive}
-                    navState={navState} />
+                    navState={state.nav} />
                 <Logo />
                 <NavSearch
-                    navState={navState}
+                    searchState={state.search}
+                    searchActive={searchActive}
                 />
             </NavMobile>
         </nav>

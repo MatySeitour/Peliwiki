@@ -66,7 +66,9 @@ function NavBar({ navActive, navState }) {
 
                 </div>
             </div>
-        </div>
+        </div>,
+
+        <div className={`${navState ? `background-nav` : `background-inactive`}`}></div>
     ];
 }
 

@@ -2,5 +2,7 @@
     width: 100%;
     position: fixed;
     height: auto;
-    background-color: #171614;
+    backdrop-filter: blur(30px);
+    background-color: #0005;
+    z-index: 1000;
 }

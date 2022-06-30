@@ -7,6 +7,7 @@
     max-width: 300px;
     background: repeating-linear-gradient(45deg, #272424, #20221f 2%, #20221f 10%);
     transition: left .3s ease;
+    z-index: 100;
 }
 
 .exit{
@@ -90,4 +91,17 @@
     background: repeating-linear-gradient(45deg, #272424, #20221f 2%, #20221f 10%);
     left: 0;
     transition: left .3s ease;
+}
+
+.background-nav{
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    background-color: #000a;
+    position: absolute;
+    z-index: -1;
+}
+
+.background-inactive{
+    display: none;
 }
