@@ -1,17 +1,12 @@
-.trends{
+.ranked{
     width: 100%;
     height: auto;
-    max-width: 100%;
 }
 
-.trends-title{
+.section-title{
     margin-left: 20px;
     font-size: 2rem;
     color: white;
     letter-spacing: 2px;
     font-weight: bolder;
-}
-
-.trends-title b{
-    color: #aa0000;
 }

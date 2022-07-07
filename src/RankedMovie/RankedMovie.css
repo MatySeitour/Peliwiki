@@ -1,0 +1,41 @@
+.ranked-movie_container{
+    width: 150px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
+
+}
+
+.ranked-movie{
+    width: 100%;
+    height: 250px;
+    background-color: blue;
+}
+
+.ranked-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+    width: auto;
+    height: 150px;
+}
+
+.star{
+    font-size: 1.3rem;
+    color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rating{
+    color: white;
+    font-size: 1.1rem;
+    margin-left: 10px;
+}

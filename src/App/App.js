@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { Header } from '../Header';
 import { Nav } from "../Nav"
 import { Main } from '../Main';
@@ -7,10 +7,8 @@ import { Trends } from '../Trends';
 import { TrendsList } from '../Trends/TrendsList';
 import { TrendsMovie } from '../Trends/TrendsMovie';
 import { TrendsImg } from '../Trends/TrendsImg';
-import { Categories } from '../Main/Categories';
-import { CategoryContainer } from '../Main/CategoryContainer';
-import { CategoryTitle } from '../Main/CategoryTitle';
-import { CategoryMovie } from '../Main/CategoryMovie';
+import { RankedSection } from '../RankedSection';
+import { Ranked } from '../Ranked';
 import { Footer } from '../Footer';
 import { FooterContainer } from '../Footer/FooterContainer';
 import { SocialMedias } from '../SocialMeidas';
@@ -22,18 +20,45 @@ import { API_KEY } from "../secret.js"
 
 function App() {
 
-  const listMovie = [1, 2, 3, 4];
-  const [value, setValue] = React.useState([]);
+  const [trends, setTrends] = useState([])
+  const [categories, setCategories] = useState([])
+  const [moviesCategory, setMoviesCategory] = useState([])
 
-  React.useEffect(() => {
-    async function getTrendsTitle() {
-      const rest = await axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=` + API_KEY);
-      setValue(rest.data.results);
-    }
-    getTrendsTitle();
-  }, [])
+  useEffect(() => {
 
-  console.log(value);
+    const categoryMovieId = categories.map((category) => {
+      return category.id;
+
+    })
+
+    setTimeout(() => {
+      async function getTrendsTitle() {
+        const rest = await axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=` + API_KEY);
+
+        setTrends(rest.data.results)
+      }
+
+      async function getCategoriesPreview() {
+        const res = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=` + API_KEY);
+
+        setCategories(res.data.genres);
+      }
+
+      async function getCategoryMovie() {
+        const res = await axios.get(`https://api.themoviedb.org/3/discover/movie/?with_genres${27}&api_key=` + API_KEY);
+        console.log(res.data.results);
+      }
+
+      getCategoryMovie();
+      getCategoriesPreview();
+      getTrendsTitle();
+    }, 3000)
+
+
+
+
+  }, [trends, categories, moviesCategory])
+
 
 
   return [
@@ -47,13 +72,14 @@ function App() {
 
         <TrendsList>
 
-          {value.map((movie) => (
+          {trends.map((movie) => (
             < TrendsMovie
               title={movie.title}
             >
 
               <TrendsImg
                 image={movie.poster_path}
+                title={movie.title}
               />
 
             </ TrendsMovie>
@@ -65,23 +91,13 @@ function App() {
 
     </Main >,
 
-    <Categories>
+    <RankedSection>
+      <Ranked>
 
-      {listMovie.map((movie) => (
-        <CategoryContainer>
+      </Ranked>
 
-          <CategoryTitle>
+    </RankedSection>,
 
-          </CategoryTitle>
-
-          <CategoryMovie>
-
-          </CategoryMovie>
-
-        </CategoryContainer>
-      ))}
-
-    </Categories>,
 
     <Footer>
 
