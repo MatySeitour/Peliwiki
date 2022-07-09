@@ -1,11 +1,12 @@
 .trends-movies__container{
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    padding: 0 20px;
+  width: 150px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 200px;
+  border-radius: 6px;
 }
 
 .trends-movies__title{
@@ -15,9 +16,11 @@
 
 .trends-movies__title--loading{
     background-color: #333;
+    width: 90%;
+    height: 20px;
     color: #333;
     text-align: center;
-    border-radius: 8px;
+    border-radius: 2px;
     font-size: 1.3rem;
     animation: loading-skeleton infinite 1.5s;
 }

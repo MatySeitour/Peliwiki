@@ -1,14 +1,12 @@
 import { useState } from "react"
 import "./TrendsMovie.css"
 
-function TrendsMovie({ children, title }) {
-    const [loading, setLoading] = useState(true);
+function TrendsMovie({ children, loading }) {
 
     if (!loading) {
         return (
             <li className="trends-movies__container">
                 {children}
-                <h3 className="trends-movies__title">{title}</h3>
             </li>
         )
     }
@@ -16,11 +14,11 @@ function TrendsMovie({ children, title }) {
         return (
             <li className="trends-movies__container">
                 {children}
-                <div className="trends-movies__title--loading">{title}</div>
+                <div className="trends-movies__title--loading"></div>
             </li>
         )
     }
 
 }
 
-export { TrendsMovie }
+export { TrendsMovie };

@@ -1,11 +1,14 @@
 import React from "react";
+import { TrendsList } from "./TrendsList";
 import "./Trends.css"
 
-function Trends({ children }) {
+function Trends({ loading, setLoading }) {
     return [
         <section className="trends">
             <h2 className="trends-title">TRE<b>NDS</b></h2>
-            {children}
+            <TrendsList
+                setLoading={setLoading}
+                loading={loading} />
         </section>
     ]
 }

@@ -10,3 +10,7 @@
     letter-spacing: 2px;
     font-weight: bolder;
 }
+
+.section-title b{
+    color: #aa0000;
+}

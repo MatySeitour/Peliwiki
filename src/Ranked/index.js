@@ -4,37 +4,57 @@ import { RankedMovie } from "../RankedMovie";
 import axios from "axios";
 import { API_KEY } from "../secret";
 
-const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-
-
-function Ranked() {
+function Ranked({ loading, setLoading }) {
     const [moviesRated, setMoviesRated] = useState([])
-    return (
 
-        useEffect(() => {
 
-            async function getRatedMovies() {
-                const rest = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?page=1&&language=en&&api_key=` + API_KEY);
-                setMoviesRated(rest.data.results);
-            }
+    useEffect(() => {
 
-            getRatedMovies();
-        }, []),
-        console.log(moviesRated),
+        async function getRatedMovies() {
+            const rest = await axios.get(`https://api.themoviedb.org/3/movie/popular?page=3&&language=en&&api_key=` + API_KEY);
+            setLoading({
+                loading: false,
+            })
 
-        <article className="ranked-container" >
-            {
-                moviesRated.map((movie) =>
-                    <RankedMovie
-                        title={movie.title}
-                        movieImage={movie.poster_path}
-                        rating={movie.vote_average}
-                    />
-                )
-            }
-        </article >
-    );
+            setMoviesRated(rest.data.results);
+        }
+
+        getRatedMovies();
+    }, [])
+
+    if (!loading) {
+        return (
+
+            <article className="ranked-container" >
+                {
+                    moviesRated.map((movie) =>
+                        <RankedMovie
+                            key={movie.id}
+                            title={movie.title}
+                            movieImage={movie.poster_path}
+                            rating={movie.vote_average}
+                        />
+                    )
+                }
+            </article >
+        );
+    }
+    else {
+        return (
+            <article className="ranked-container">
+                <div className="ranked-loading"></div>
+                <div className="ranked-loading"></div>
+                <div className="ranked-loading"></div>
+                <div className="ranked-loading"></div>
+                <div className="ranked-loading"></div>
+                <div className="ranked-loading"></div>
+                <div className="ranked-loading"></div>
+                <div className="ranked-loading"></div>
+                <div className="ranked-loading"></div>
+            </article>
+        )
+    }
+
 
 }
 
