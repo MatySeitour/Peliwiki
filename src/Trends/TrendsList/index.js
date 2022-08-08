@@ -5,7 +5,7 @@ import { TrendsImg } from "../TrendsImg"
 import { API_KEY } from "../../secret";
 import "./TrendsList.css"
 
-function TrendsList({ loading, setLoading }) {
+function TrendsList({ loading, setLoading, movieDetail, setMovieDetail, imageDetail, setImageDetail }) {
     const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 
     const [trends, setTrends] = useState([]);
@@ -25,25 +25,28 @@ function TrendsList({ loading, setLoading }) {
             }
         }
         getTrends();
-
-
-
     }, [])
 
+
     if (!loading) {
-        console.log(trends)
         return [
             <ul className="trends-list">
                 {trends.map((movie) => (
                     < TrendsMovie
+                        key={movie.id}
                         title={movie.title}
                         loading={loading}
                     >
                         <TrendsImg
+                            movieId={movie.id}
+                            movieDetail={movieDetail}
+                            setMovieDetail={setMovieDetail}
                             image={movie.poster_path}
                             title={movie.title}
                             loading={loading}
                             rating={movie.vote_average.toFixed(1)}
+                            imageDetail={imageDetail}
+                            setImageDetail={setImageDetail}
                         />
                     </ TrendsMovie>
                 ))}
@@ -55,6 +58,7 @@ function TrendsList({ loading, setLoading }) {
             <ul className="trends-list">
                 {list.map((movie) => (
                     < TrendsMovie
+                        key={movie}
                         loading={loading}
                     >
                         <TrendsImg

@@ -8,9 +8,16 @@ import { SocialMedias } from '../SocialMeidas';
 import { SocialMediasContainer } from '../SocialMeidas/SocialMediasContainer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { useState } from 'react';
 
 
 function App() {
+  const [movieDetail, setMovieDetail] = useState({
+    image: false,
+    title: "",
+    description: "",
+  });
+
 
   // async function getCategoryMovie() {
   //   try{
@@ -25,11 +32,18 @@ function App() {
 
 
   return [
-    <Header >
+    <Header
+      movieDetail={movieDetail}
+      setMovieDetail={setMovieDetail}
+    >
       <Nav />
     </Header>,
 
-    <Main />,
+    <Main
+      movieDetail={movieDetail}
+      setMovieDetail={setMovieDetail}
+    />,
+
 
 
     <Footer>
