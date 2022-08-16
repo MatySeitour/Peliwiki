@@ -1,0 +1,27 @@
+.belong-colection{
+    width: 100%;
+    height: auto;
+  }
+  
+  .belong-colection__title{
+    margin-left: 20px;
+    font-size: 1.6rem;
+    color: white;
+    letter-spacing: 2px;
+    font-weight: bolder;
+    margin-bottom: 20px;
+  }
+  
+  b{
+    color: #a00;
+  }
+  
+  .belongs-movies__container{
+      overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    height: 241px;
+    padding-bottom: 16px;
+    padding-left: 10px;
+  }
+  
