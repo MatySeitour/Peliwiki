@@ -27,9 +27,12 @@ function Details({ movieDetail, setMovieDetail, imageDetail }) {
     const { id } = useParams();
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+
         async function getDetails() {
             try {
                 const rest = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=` + API_KEY);
+                console.log(rest.data.belongs_to_collection)
                 if (rest.data.belongs_to_collection !== null) {
                     setDetails({
                         ...details,
@@ -56,9 +59,8 @@ function Details({ movieDetail, setMovieDetail, imageDetail }) {
                         tagline: rest.data.tagline,
                         releaseData: rest.data.release_date,
                         relatedGenres: rest.data.genres,
-                        detailsMovieId: rest.data.id,
                     });
-
+                    setDetailsMovieId(rest.data.id);
                 }
 
             }

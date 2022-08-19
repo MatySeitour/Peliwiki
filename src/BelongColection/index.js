@@ -9,10 +9,12 @@ function BelongColection({ belongMovies }) {
     const [belong, setBelong] = useState([])
 
     useEffect(() => {
+        window.scrollTo(0, 0)
 
         async function getBelong() {
             try {
                 const rest = await axios.get(`https://api.themoviedb.org/3/collection/${belongMovies}?api_key=` + API_KEY);
+                console.log(belongMovies)
                 setBelong({
                     ...belong,
                 });
@@ -35,7 +37,7 @@ function BelongColection({ belongMovies }) {
         <section>
             <div className="belong-colection">
                 <div>
-                    <h3 className="belong-colection__title">BEL<b>ONGS</b> TO <b>COLE</b>CTION</h3>
+                    <h3 className="belong-colection__title">BEL<b>ONGS</b> TO COLEC<b>TION</b></h3>
                 </div>
 
                 <ul className="belongs-movies__container">

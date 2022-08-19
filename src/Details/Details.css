@@ -67,7 +67,7 @@
 .movieDescription-container{
   width: 100%;
   max-width: 100%;
-  height: 400px;
+  height: auto;
   background-color: white;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
@@ -109,9 +109,9 @@
   font-size: 1.3rem;
 }
 
-/* .movieDescription-overview{
-  transform: translateY(-100%);
-} */
+.movieDescription-overview{
+  margin-top: 30px;
+}
 
 .date-release{
   font-weight: 700;
@@ -124,5 +124,6 @@
   flex-direction: column;
   align-items: flex-start;
   flex-wrap: wrap;
+  margin: 50px 0;
 }
 
