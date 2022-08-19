@@ -1,11 +1,12 @@
 import { useState } from "react"
 import "./TrendsMovie.css"
 
-function TrendsMovie({ children, loading }) {
+function TrendsMovie({ children, loading, key }) {
+
 
     if (!loading) {
         return (
-            <li className="trends-movies__container">
+            <li key={key} className="trends-movies__container">
                 {children}
             </li>
         )

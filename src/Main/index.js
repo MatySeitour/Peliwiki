@@ -1,9 +1,9 @@
 import { useState } from 'react';
-// import { Trends } from '../Trends';
-// import { RankedSection } from '../RankedSection';
-// import { SeriesSection } from '../SeriesSection';
 import { Details } from '../Details';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, } from "react-router-dom";
+import { SearchSection } from '../SearchSection';
+import { SeriesDetails } from '../SeriesDetails';
+import { NotFound } from '../NotFound';
 import "./Main.css"
 import { Home } from '../Home';
 
@@ -13,16 +13,6 @@ function Main({ movieDetail, setMovieDetail, }) {
         loading: true,
     })
     const [imageDetail, setImageDetail] = useState("");
-
-    // useEffect(() => {
-    //     if (movieDetail.image) {
-    //         window.location.hash = "#details"
-    //     }
-    //     else {
-    //         window.location.hash = ""
-    //     }
-
-    // }, [movieDetail])
 
     return (
         <main className='main'>
@@ -42,6 +32,13 @@ function Main({ movieDetail, setMovieDetail, }) {
                         movieDetail={movieDetail}
                         setMovieDetail={setMovieDetail}
                     />} />
+
+                    <Route exact path='?search/:input' element={<SearchSection />} />
+
+                    <Route exact path='*' element={<NotFound />} />
+
+                    <Route exact path='/series/:id' element={<SeriesDetails />} />
+
                 </Routes>
             </BrowserRouter>
         </main>

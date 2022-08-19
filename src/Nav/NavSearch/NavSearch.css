@@ -36,6 +36,19 @@
     fill: #fff;
 }
 
+.button-search{
+    width: 80px;
+    height: 100%;
+    background-color: #000;
+    outline: none;
+    border: none;
+}
+
+.button-search svg{
+    width: 26px;
+    fill: #a00;
+}
+
 .inactive{
     display: none;
 }

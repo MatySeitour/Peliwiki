@@ -8,6 +8,7 @@ import "./TrendsList.css"
 function TrendsList({ loading, setLoading, movieDetail, setMovieDetail, imageDetail, setImageDetail }) {
     const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 
+
     const [trends, setTrends] = useState([]);
 
 
@@ -58,10 +59,11 @@ function TrendsList({ loading, setLoading, movieDetail, setMovieDetail, imageDet
             <ul className="trends-list">
                 {list.map((movie) => (
                     < TrendsMovie
-                        key={movie}
+                        key={movie.id}
                         loading={loading}
                     >
                         <TrendsImg
+                            key={movie.id}
                             loading={loading}
                         />
                     </ TrendsMovie>

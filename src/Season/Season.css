@@ -1,0 +1,10 @@
+.season-option{
+    width: 100%;
+    height: 30px;
+    margin: 10px 0;
+    padding-left: 10px;
+}
+
+.season-option:hover{
+    background-color: #aaa;
+}

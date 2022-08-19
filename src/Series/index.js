@@ -10,13 +10,19 @@ function Series({ loading, setLoading }) {
     useEffect(() => {
 
         async function getRatedSeries() {
-            const rest = await axios.get(`https://api.themoviedb.org/3/tv/top_rated?language=en&&api_key=` + API_KEY);
+            try {
+                const rest = await axios.get(`https://api.themoviedb.org/3/tv/top_rated?language=en&&api_key=` + API_KEY);
+                console.log(rest.data.results)
+                setLoading({
+                    loading: false,
+                })
+                setSeriesRated(rest.data.results);
+            }
+            catch (error) {
+                console.log(error)
+            }
 
-            setLoading({
-                loading: false,
-            })
 
-            setSeriesRated(rest.data.results);
         }
         getRatedSeries();
     }, [])
@@ -30,6 +36,7 @@ function Series({ loading, setLoading }) {
                     seriesRated.map((movie) =>
                         <SeriesRanked
                             key={movie.id}
+                            seresId={movie.id}
                             title={movie.name}
                             movieImage={movie.poster_path}
                             rating={movie.vote_average}

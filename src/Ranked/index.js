@@ -3,11 +3,14 @@ import { useEffect, useState } from "react";
 import { RankedMovie } from "../RankedMovie";
 import axios from "axios";
 import { API_KEY } from "../secret";
+import { useThemeContext } from "../Context/ThemeContext";
 
 function Ranked({ loading, setLoading }) {
     const [moviesRated, setMoviesRated] = useState([])
 
+    const { theme } = useThemeContext()
 
+    console.log(theme);
     useEffect(() => {
 
         async function getRatedMovies() {
@@ -30,6 +33,7 @@ function Ranked({ loading, setLoading }) {
                     moviesRated.map((movie) =>
                         <RankedMovie
                             key={movie.id}
+                            rankedId={movie.id}
                             title={movie.title}
                             movieImage={movie.poster_path}
                             rating={movie.vote_average}
