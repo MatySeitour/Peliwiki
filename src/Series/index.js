@@ -12,7 +12,6 @@ function Series({ loading, setLoading }) {
         async function getRatedSeries() {
             try {
                 const rest = await axios.get(`https://api.themoviedb.org/3/tv/top_rated?language=en&&api_key=` + API_KEY);
-                console.log(rest.data.results)
                 setLoading({
                     loading: false,
                 })

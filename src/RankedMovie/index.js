@@ -7,7 +7,6 @@ function RankedMovie({ title, movieImage, rating, rankedId }) {
             <img alt={title} src={"https://image.tmdb.org/t/p/w500/" + movieImage} className="ranked-movie"></img>
             <div className="ranked-info__container">
                 <h4 className="ranked-title">{title}</h4>
-                <span className="star">★<p className="rating">{rating}</p></span>
             </div>
         </Link>
     );

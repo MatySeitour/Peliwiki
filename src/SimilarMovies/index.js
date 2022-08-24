@@ -5,7 +5,6 @@ import { MovieSimilar } from "../MovieSimilar";
 import "./SimilarMovies.css"
 
 function SimilarMovies({ similarIdMovie }) {
-    console.log(similarIdMovie)
     const [similarMovie, setSimilarMovie] = useState([]);
 
     useEffect(() => {

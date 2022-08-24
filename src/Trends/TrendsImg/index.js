@@ -20,7 +20,6 @@ function TrendsImg({ image, title, loading, rating, movieDetail, setMovieDetail,
                 <img alt={title} className="trends-img" src={"https://image.tmdb.org/t/p/w500/" + image} />
                 <div className="trends-info__container">
                     <h4 className="title-movie">{title}</h4>
-                    <span className="star">★<p className="trends-rating">{rating}</p></span>
                 </div>
             </Link>
         ]

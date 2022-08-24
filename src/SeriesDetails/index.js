@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { API_KEY } from "../secret"
 import { RelatedGenres } from "../RelatedGenres"
+import { Episodes } from "../Episodes"
 import "./SeriesDetails.css"
 import { Season } from "../Season"
 
@@ -23,11 +24,10 @@ function SeriesDetails() {
     const [seasonListSelect, setSeasonListSelect] = useState("Select Season")
 
     useEffect(() => {
-
+        window.scrollTo(0, 0)
         async function getSerieDetails() {
             try {
                 const rest = await axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=` + API_KEY);
-                console.log(rest.data.seasons)
                 setSerieDetail({
                     ...serieDetail,
                     background: rest.data.poster_path,
@@ -47,7 +47,8 @@ function SeriesDetails() {
 
         getSerieDetails()
 
-    }, [id, seasonListSelect])
+    }, [id])
+
 
     const urlBase = "https://image.tmdb.org/t/p/w500/";
     const sectionStyle = {
@@ -59,6 +60,7 @@ function SeriesDetails() {
         backgroundRepeat: 'no-repeat',
     }
 
+    const episode_number = seasonListSelect.split(" ");
     return (
         <section className="movieDetail-container">
             <div style={sectionStyle} className="movie-image">
@@ -109,6 +111,7 @@ function SeriesDetails() {
                     </li>
 
                     <Season
+                        serieId={id}
                         seasonListSelect={seasonListSelect}
                         setSeasonListSelect={setSeasonListSelect}
                         seasonListState={seasonList}
@@ -116,22 +119,14 @@ function SeriesDetails() {
                         seasons={serieDetail.seasons}
                     />
 
-
-                    {/* <option value="r">Rojo</option>
-                        <option value="a">Azul</option>
-                        <option value="v">Verde</option> */}
+                    <Episodes
+                        seasonNumber={serieDetail.seasons}
+                        episode_number={episode_number}
+                        seasonListSelect={seasonListSelect}
+                    />
                 </div>
 
             </article>,
-
-            {/* <BelongColection
-                belongMovies={belongsColection}
-            />,
-
-            <SimilarMovies
-                similarIdMovie={detailsMovieId}
-            /> */}
-
 
         </section >
     )

@@ -10,7 +10,6 @@ function Ranked({ loading, setLoading }) {
 
     const { theme } = useThemeContext()
 
-    console.log(theme);
     useEffect(() => {
 
         async function getRatedMovies() {

@@ -4,8 +4,9 @@ import axios from "axios";
 import "./BelongColection.css"
 import { MovieBelong } from "../MovieBelong";
 
-function BelongColection({ belongMovies }) {
-
+function BelongColection({ belongMovies, movieId }) {
+    console.log(belongMovies)
+    console.log(movieId)
     const [belong, setBelong] = useState([])
 
     useEffect(() => {
@@ -14,7 +15,6 @@ function BelongColection({ belongMovies }) {
         async function getBelong() {
             try {
                 const rest = await axios.get(`https://api.themoviedb.org/3/collection/${belongMovies}?api_key=` + API_KEY);
-                console.log(belongMovies)
                 setBelong({
                     ...belong,
                 });

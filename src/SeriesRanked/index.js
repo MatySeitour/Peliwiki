@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 
 function SeriesRanked({ title, movieImage, rating, seresId }) {
-    console.log(seresId)
-    console.log(movieImage)
     return (
         <Link to={`/series/${seresId}`} className="ranked-movie_container">
             <img alt={title} src={"https://image.tmdb.org/t/p/w500/" + movieImage} className="ranked-movie"></img>

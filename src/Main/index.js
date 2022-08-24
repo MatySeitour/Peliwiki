@@ -31,6 +31,8 @@ function Main({ movieDetail, setMovieDetail, }) {
                         setImageDetail={setImageDetail}
                         movieDetail={movieDetail}
                         setMovieDetail={setMovieDetail}
+                        setLoading={setValue}
+                        loading={value.loading}
                     />} />
 
                     <Route exact path='?search/:input' element={<SearchSection />} />

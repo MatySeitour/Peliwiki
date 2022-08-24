@@ -4,7 +4,6 @@ function SearchSection() {
 
     const location = useLocation()
 
-    console.log(location);
 
     return (
         <div>hola</div>
