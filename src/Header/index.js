@@ -1,12 +1,12 @@
-import { useState } from "react";
 import "./Header.css"
+import { Nav } from "../Nav"
 
-function Header({ children }) {
+function Header() {
 
 
     return (
         <header className="header">
-            {children}
+            <Nav />
         </header>
     );
 }

@@ -6,3 +6,20 @@
     background-color: #0005;
     z-index: 1000;
 }
+
+.nav-container{
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+}
+
+.icon-bar, .icon-search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 26px;
+    fill: #fff;
+}

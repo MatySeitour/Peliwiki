@@ -1,5 +1,4 @@
 import React from "react";
-import { NavMobile } from "./NavMobile";
 import "./Nav.css"
 import { NavBar } from "./NavBar";
 import { Logo } from "../Logo";
@@ -46,7 +45,7 @@ function Nav() {
 
     return (
         <nav className="nav">
-            <NavMobile>
+            <div className="nav-container">
                 <NavBar
                     navActive={navActive}
                     navState={state.nav} />
@@ -55,7 +54,8 @@ function Nav() {
                     searchState={state.search}
                     searchActive={searchActive}
                 />
-            </NavMobile>
+            </div>
+
         </nav>
     );
 }

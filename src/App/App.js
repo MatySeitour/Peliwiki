@@ -1,6 +1,5 @@
 import './App.css';
 import { Header } from '../Header';
-import { Nav } from "../Nav"
 import { Main } from '../Main';
 import { Footer } from '../Footer';
 import { FooterContainer } from '../Footer/FooterContainer';
@@ -35,9 +34,7 @@ function App() {
     <Header
       movieDetail={movieDetail}
       setMovieDetail={setMovieDetail}
-    >
-      <Nav />
-    </Header>,
+    />,
 
     <Main
       movieDetail={movieDetail}
