@@ -1,8 +1,8 @@
 .movie-belong{
-        width: 100px;
-        height: 80%;
+        width: 50%;
+        height: 100%;
         display: inline-block;
-        margin-right: 10px;
+        margin-right: 50px;
 }
 
 .image-belong{

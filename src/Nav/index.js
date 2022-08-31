@@ -48,7 +48,8 @@ function Nav() {
             <div className="nav-container">
                 <NavBar
                     navActive={navActive}
-                    navState={state.nav} />
+                    navState={state.nav}
+                />
                 <Logo />
                 <NavSearch
                     searchState={state.search}

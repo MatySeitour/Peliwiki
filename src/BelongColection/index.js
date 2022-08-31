@@ -5,8 +5,6 @@ import "./BelongColection.css"
 import { MovieBelong } from "../MovieBelong";
 
 function BelongColection({ belongMovies, movieId }) {
-    console.log(belongMovies)
-    console.log(movieId)
     const [belong, setBelong] = useState([])
 
     useEffect(() => {

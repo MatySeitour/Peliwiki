@@ -40,13 +40,13 @@
 .nav-items{
     width: 100%;
     height: 50px;
-    margin-top: 10px;
+    margin-top: 30px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     padding-left: 10px;
     align-items: center;
-    border-bottom: 1px solid #a00;
+    border-bottom: 1px solid #fff;
 }
 
 .nav-items__container{
@@ -93,11 +93,10 @@
     height: 100vh;
     width: 100vw;
     max-width: 300px;
-    background: repeating-linear-gradient(45deg, #272424, #20221f 2%, #20221f 10%);
+    background-color: #000;
     left: 0;
     transition: left .3s ease;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 400px;
+    z-index: 10;
 }
 
 .background-nav{
@@ -107,7 +106,7 @@
     left: 0;
     background-color: #000a;
     position: absolute;
-    z-index: -1;
+    z-index: 1;
 }
 
 .background-inactive{

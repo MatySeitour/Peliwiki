@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
-import { TrendsMovie } from "../TrendsMovie";
 import { TrendsImg } from "../TrendsImg"
 import { API_KEY } from "../../secret";
 import "./TrendsList.css"
 
 function TrendsList({ loading, setLoading, movieDetail, setMovieDetail, imageDetail, setImageDetail }) {
-    const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 
 
     const [trends, setTrends] = useState([]);
@@ -33,23 +31,19 @@ function TrendsList({ loading, setLoading, movieDetail, setMovieDetail, imageDet
         return [
             <ul className="trends-list">
                 {trends.map((movie) => (
-                    < TrendsMovie
+
+                    <TrendsImg
                         key={movie.id}
+                        movieId={movie.id}
+                        movieDetail={movieDetail}
+                        setMovieDetail={setMovieDetail}
+                        image={movie.poster_path}
                         title={movie.title}
                         loading={loading}
-                    >
-                        <TrendsImg
-                            movieId={movie.id}
-                            movieDetail={movieDetail}
-                            setMovieDetail={setMovieDetail}
-                            image={movie.poster_path}
-                            title={movie.title}
-                            loading={loading}
-                            rating={movie.vote_average.toFixed(1)}
-                            imageDetail={imageDetail}
-                            setImageDetail={setImageDetail}
-                        />
-                    </ TrendsMovie>
+                        rating={movie.vote_average.toFixed(1)}
+                        imageDetail={imageDetail}
+                        setImageDetail={setImageDetail}
+                    />
                 ))}
             </ul>
         ]
@@ -57,17 +51,11 @@ function TrendsList({ loading, setLoading, movieDetail, setMovieDetail, imageDet
     else {
         return [
             <ul className="trends-list">
-                {list.map((movie) => (
-                    < TrendsMovie
-                        key={movie.id}
-                        loading={loading}
-                    >
-                        <TrendsImg
-                            key={movie.id}
-                            loading={loading}
-                        />
-                    </ TrendsMovie>
-                ))}
+                <li className="trends-img__loading"></li>
+                <li className="trends-img__loading"></li>
+                <li className="trends-img__loading"></li>
+                <li className="trends-img__loading"></li>
+                <li className="trends-img__loading"></li>
             </ul>
         ]
     }

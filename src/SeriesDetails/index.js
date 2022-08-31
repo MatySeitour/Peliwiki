@@ -60,6 +60,8 @@ function SeriesDetails() {
         backgroundRepeat: 'no-repeat',
     }
 
+    console.log(serieDetail.title)
+
     const episode_number = seasonListSelect.split(" ");
     return (
         <section className="movieDetail-container">
@@ -120,6 +122,7 @@ function SeriesDetails() {
                     />
 
                     <Episodes
+                        seasonName={serieDetail.title}
                         seasonNumber={serieDetail.seasons}
                         episode_number={episode_number}
                         seasonListSelect={seasonListSelect}

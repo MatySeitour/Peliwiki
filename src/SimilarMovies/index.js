@@ -29,7 +29,7 @@ function SimilarMovies({ similarIdMovie }) {
 
                 <ul className="similarMovies__container">
                     {similarMovie.map((movie) => (
-                        <MovieSimilar
+                        < MovieSimilar
                             key={movie.id}
                             movieSimilarId={movie.id}
                             movieSimilarImage={movie.poster_path}

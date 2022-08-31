@@ -5,16 +5,23 @@ import { API_KEY } from "../secret";
 import { EpisodeSeason } from "../EpisodeSeason";
 import "./Episodes.css"
 
-function Episodes({ seasonNumber, seasonListSelect }) {
+function Episodes({ seasonNumber, seasonListSelect, seasonName }) {
     const { id } = useParams()
-    const [episodes, setEpisodes] = useState([])
+    const [episodes, setEpisodes] = useState({
+        chapters: [],
+        seasonName: "",
+    })
 
     useEffect(() => {
         seasonNumber.map((season) => {
             if (season.name === seasonListSelect) {
                 async function getEpisodes() {
                     const rest = await axios.get(`https://api.themoviedb.org/3/tv/${id}/season/${season.season_number}?api_key=` + API_KEY);
-                    setEpisodes(rest.data.episodes)
+                    setEpisodes({
+                        ...episodes,
+                        chapters: rest.data.episodes,
+                        seasonName: season.name
+                    })
                 }
                 return getEpisodes()
             }
@@ -25,15 +32,19 @@ function Episodes({ seasonNumber, seasonListSelect }) {
 
     if (seasonListSelect === "Select Season") {
         return (
-            <p>hola</p>
+            <div></div>
         )
     }
 
     else {
-        return (
+        return [
+            <div className="season-title__container">
+                <h3>
+                    {seasonName + ": " + episodes.seasonName}
+                </h3>
+            </div>,
             <ul className="episodes-container">
-                {episodes.map((episode) => (
-                    console.log(episode),
+                {episodes.chapters.map((episode) => (
                     <EpisodeSeason
                         key={episode.id}
                         episodeTitle={episode.name}
@@ -52,7 +63,7 @@ function Episodes({ seasonNumber, seasonListSelect }) {
             //         </div>
             //     </div>
             // </div>
-        )
+        ]
     }
 
 }

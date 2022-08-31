@@ -4,9 +4,9 @@ import "./Logo.css"
 
 function Logo() {
     return (
-        <div className="logo-container">
+        <Link to={"/"} className="logo-container">
             <span className="logo"><p className="logo-title">PELI<b className="logo-letters">WIKI</b></p></span>
-        </div>
+        </Link>
     );
 }
 

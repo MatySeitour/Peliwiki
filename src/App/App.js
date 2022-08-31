@@ -1,6 +1,10 @@
 import './App.css';
 import { Header } from '../Header';
-import { Main } from '../Main';
+import { Details } from '../Details';
+import { BrowserRouter, Routes, Route, Link, } from "react-router-dom";
+import { SearchSection } from '../SearchSection';
+import { SeriesDetails } from '../SeriesDetails';
+import { NotFound } from '../NotFound';
 import { Footer } from '../Footer';
 import { FooterContainer } from '../Footer/FooterContainer';
 import { SocialMedias } from '../SocialMeidas';
@@ -8,6 +12,7 @@ import { SocialMediasContainer } from '../SocialMeidas/SocialMediasContainer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { useState } from 'react';
+import { Home } from '../Home';
 
 
 function App() {
@@ -17,29 +22,50 @@ function App() {
     description: "",
   });
 
-
-  // async function getCategoryMovie() {
-  //   try{
-  //   const res = await axios.get(`https://api.themoviedb.org/3/discover/movie/?with_genres${27}&api_key=` + API_KEY);
-
-  //   }
-  //   console.log(res.data.results);
-  // }
-
-  // getCategoryMovie();
-
-
+  const [value, setValue] = useState({
+    loading: true,
+  })
+  const [imageDetail, setImageDetail] = useState("");
 
   return [
-    <Header
-      movieDetail={movieDetail}
-      setMovieDetail={setMovieDetail}
-    />,
 
-    <Main
-      movieDetail={movieDetail}
-      setMovieDetail={setMovieDetail}
-    />,
+
+
+    <BrowserRouter>
+      <Header
+        movieDetail={movieDetail}
+        setMovieDetail={setMovieDetail}
+      />
+      <Routes>
+        <Route exact path="/" element={<Home
+          movieDetail={movieDetail}
+          setMovieDetail={setMovieDetail}
+          setLoading={setValue}
+          loading={value.loading}
+          imageDetail={imageDetail}
+          setImageDetail={setImageDetail}
+        />} />
+        <Route exact path='/movie/:id' element={<Details
+          imageDetail={imageDetail}
+          setImageDetail={setImageDetail}
+          movieDetail={movieDetail}
+          setMovieDetail={setMovieDetail}
+          setLoading={setValue}
+          loading={value.loading}
+        />} />
+
+        <Route exact path='/search/:input' element={<SearchSection />} />
+
+        <Route exact path='*' element={<NotFound />} />
+
+        <Route exact path='/series/:id' element={<SeriesDetails />} />
+
+      </Routes>
+    </BrowserRouter>,
+    // <Main
+    //   movieDetail={movieDetail}
+    //   setMovieDetail={setMovieDetail}
+    // />,
 
 
 
