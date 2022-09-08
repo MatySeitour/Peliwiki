@@ -31,7 +31,6 @@ function TrendsList({ loading, setLoading, movieDetail, setMovieDetail, imageDet
         return [
             <ul className="trends-list">
                 {trends.map((movie) => (
-
                     <TrendsImg
                         key={movie.id}
                         movieId={movie.id}

@@ -9,7 +9,6 @@ function NavSearch({ searchState, searchActive }) {
         e.preventDefault()
     }
 
-    console.log(searchState);
 
     if (!searchState) {
         return [

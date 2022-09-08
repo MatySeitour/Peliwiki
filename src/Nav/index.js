@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Nav.css"
 import { NavBar } from "./NavBar";
 import { Logo } from "../Logo";
@@ -43,8 +43,21 @@ function Nav() {
         }
     }
 
+    const [showFixed, setShowFixed] = useState(false)
+
+    useEffect(() => {
+        const onScroll = e => {
+            const newScroll = window.scrollY > 1
+            showFixed !== newScroll && setShowFixed(newScroll)
+        }
+
+        document.addEventListener(`scroll`, onScroll);
+        return () => document.removeEventListener(`scroll`, onScroll)
+
+    })
+
     return (
-        <nav className="nav">
+        <nav className={`nav ${showFixed && `nav-fixed`}`}>
             <div className="nav-container">
                 <NavBar
                     navActive={navActive}

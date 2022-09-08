@@ -6,16 +6,18 @@
     overflow: hidden;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
-    opacity: 0;
     pointer-events: none;
+    display: none;
+    transition: all .5s ease;
     margin-bottom: 30px;
 }
 
 .season-option__container.active{
     overflow-y: scroll;
-    opacity: 1;
-    transition: opacity .5s ease;
+    display: inline-block;
+    transition: display .5s ease;
     pointer-events: all;
+    background: #a00;
 }
 
 .season-option__container::-webkit-scrollbar{
@@ -38,14 +40,14 @@
     justify-content: space-between;
     align-items: center;
     padding-right: 6px;
-    background-color: black;
-    color: #a00;
+    background-color: #a00;
+    color: #000;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
 }
 
 .season-option__default svg{
-    fill: #a00;
+    fill: #000;
     width: 8px;
     transform: rotate(90deg);
 }
@@ -63,4 +65,5 @@
 .series-data__relase{
     font-weight: 700;
     margin-bottom: 10px;
+    color: #fff;
 }

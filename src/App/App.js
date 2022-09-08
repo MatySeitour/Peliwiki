@@ -1,7 +1,7 @@
 import './App.css';
 import { Header } from '../Header';
 import { Details } from '../Details';
-import { BrowserRouter, Routes, Route, Link, } from "react-router-dom";
+import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import { SearchSection } from '../SearchSection';
 import { SeriesDetails } from '../SeriesDetails';
 import { NotFound } from '../NotFound';
@@ -59,6 +59,7 @@ function App() {
         <Route exact path='*' element={<NotFound />} />
 
         <Route exact path='/series/:id' element={<SeriesDetails />} />
+        <Route exact path='/genre/:name' element={<Genres />} />
 
       </Routes>
     </BrowserRouter>,
@@ -69,35 +70,35 @@ function App() {
 
 
 
-    <Footer>
+    // <Footer>
 
-      <FooterContainer>
+    //   <FooterContainer>
 
-        <SocialMedias>
+    //     <SocialMedias>
 
-          <SocialMediasContainer>
+    //       <SocialMediasContainer>
 
-            <FontAwesomeIcon icon={faTwitter} />
+    //         <FontAwesomeIcon icon={faTwitter} />
 
-          </SocialMediasContainer>
+    //       </SocialMediasContainer>
 
-          <SocialMediasContainer>
+    //       <SocialMediasContainer>
 
-            <FontAwesomeIcon icon={faWhatsapp} />
+    //         <FontAwesomeIcon icon={faWhatsapp} />
 
-          </SocialMediasContainer>
+    //       </SocialMediasContainer>
 
-          <SocialMediasContainer>
+    //       <SocialMediasContainer>
 
-            <FontAwesomeIcon icon={faInstagram} />
+    //         <FontAwesomeIcon icon={faInstagram} />
 
-          </SocialMediasContainer>
+    //       </SocialMediasContainer>
 
-        </SocialMedias>
+    //     </SocialMedias>
 
-      </FooterContainer>
+    //   </FooterContainer>
 
-    </Footer>
+    // </Footer>
 
   ];
 }

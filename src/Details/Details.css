@@ -68,19 +68,19 @@
   width: 100%;
   max-width: 100%;
   height: auto;
-  background-color: white;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
   padding: 20px;
   word-wrap: break-word;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: #000;
+  border-radius: 20px;
 }
 
 .movieDescription-details{
   display: flex;
   justify-content: space-between;
+  
 }
 
 .movieDescription-title{
@@ -96,7 +96,7 @@
 
 
 .movieDescription-rate p{
-  color: black;
+  color: white;
   font-weight: 500;
   margin-left: 6px;
 }
@@ -111,6 +111,7 @@
 
 .movieDescription-overview{
   margin-top: 30px;
+  color: white;
 }
 
 .date-release{

@@ -110,3 +110,7 @@
       opacity: 0%;
     }
   }
+
+  .article-trends{
+    min-height: 250px;
+  }

@@ -60,7 +60,6 @@ function SeriesDetails() {
         backgroundRepeat: 'no-repeat',
     }
 
-    console.log(serieDetail.title)
 
     const episode_number = seasonListSelect.split(" ");
     return (

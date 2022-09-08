@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 6px;
+    color: white;
 }
 
 .genre__container span{
@@ -11,4 +12,8 @@
     background-color: #a00;
     margin-right: 6px;
     border-radius: 20%;
+}
+
+.date-release{
+    color: white;
 }
