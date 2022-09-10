@@ -1,12 +1,13 @@
 import "./RelatedGenres.css"
+import { Link } from "react-router-dom";
 
 function RelatedGenres({ genreName, genreId }) {
 
     return (
-        <div className="genre__container">
+        <Link to={`/genre/${genreName}`} className="genre__container">
             <span></span>
             <p>{genreName}</p>
-        </div>
+        </Link>
     )
 }
 

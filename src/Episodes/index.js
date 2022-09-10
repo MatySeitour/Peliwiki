@@ -17,6 +17,7 @@ function Episodes({ seasonNumber, seasonListSelect, seasonName }) {
             if (season.name === seasonListSelect) {
                 async function getEpisodes() {
                     const rest = await axios.get(`https://api.themoviedb.org/3/tv/${id}/season/${season.season_number}?api_key=` + API_KEY);
+                    console.log(rest.data)
                     setEpisodes({
                         ...episodes,
                         chapters: rest.data.episodes,

@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import { SearchSection } from '../SearchSection';
 import { SeriesDetails } from '../SeriesDetails';
 import { NotFound } from '../NotFound';
+import { Genres } from '../Genres';
 import { Footer } from '../Footer';
 import { FooterContainer } from '../Footer/FooterContainer';
 import { SocialMedias } from '../SocialMeidas';
@@ -59,7 +60,7 @@ function App() {
         <Route exact path='*' element={<NotFound />} />
 
         <Route exact path='/series/:id' element={<SeriesDetails />} />
-        <Route exact path='/genre/:name' element={<Genres />} />
+        <Route exact path='/genre/:nameGenre' element={<Genres />} />
 
       </Routes>
     </BrowserRouter>,

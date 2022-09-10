@@ -8,7 +8,6 @@ function SearchResults({ movieId, title, image, titleSerie }) {
     const ref = useRef();
 
     const screen = useIntersection(ref)
-    console.log(movieId)
     if (image && title) {
         return (
             <li ref={ref} className="trends-movies__container">
