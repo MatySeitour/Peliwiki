@@ -20,18 +20,16 @@ function SearchSection() {
             window.scrollTo(0, 0)
             try {
                 if (inputSearch !== input) {
-                    console.log("entro")
                     setResultsSearch([])
                     setInputSearch(input)
                     setPage(1);
                 }
+                console.log(inputSearch == input)
                 const res = await axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${input}&page=${page}`);
-                console.log(page)
                 setResultsSearch((prev) => (
                     prev.concat(res.data.results)
                 )
                 )
-                console.log(resultsSearch)
 
                 setMaxPages(res.data.page < res.data.total_pages);
             }
@@ -42,38 +40,29 @@ function SearchSection() {
         getSearchMovies();
     }, [input, page])
 
-    console.log(resultsSearch)
-    if (resultsSearch) {
-        { console.log("asdffd") }
-        return [
+
+
+    return [
+        <section className="search-section">
             <h2 className="title-search">SEA<b>RCH </b>RESU<b>LTS</b> F<b>OR</b> {input}</h2>
-        ]
-    }
+            <InfiniteScroll dataLength={resultsSearch.length} hasMore={maxPages} next={() => setPage((prevPage) => prevPage + 1)}>
+                <ul className="trends-list">
+                    {resultsSearch.map((query) => (
+                        <SearchResults
+                            key={query.id}
+                            movieId={query.id}
+                            title={query.title}
+                            image={query.poster_path}
+                            titleSerie={query.name}
+                        />
+                    ))}
+                </ul>,
+            </InfiniteScroll>
 
-    else {
-        return [
-            <section className="search-section">
-                <h2 className="title-search">SEA<b>RCH </b>RESU<b>LTS</b> F<b>OR</b> {input}</h2>
-                <InfiniteScroll dataLength={resultsSearch.length} hasMore={maxPages} next={() => setPage((prevPage) => prevPage + 1)}>
-                    <ul className="trends-list">
-                        {resultsSearch.map((query) => (
-                            <SearchResults
-                                key={query.id}
-                                movieId={query.id}
-                                title={query.title}
-                                image={query.poster_path}
-                                titleSerie={query.name}
-                            />
-                        ))}
-                    </ul>,
-                </InfiniteScroll>
-
-                {/* <button onClick={() => setPage(prevPage => prevPage + 1)}>+</button>
+            {/* <button onClick={() => setPage(prevPage => prevPage + 1)}>+</button>
                 <button onClick={() => setPage(prevPage => prevPage - 1)}>-</button> */}
-            </section>
-        ]
-    }
-
+        </section>
+    ]
 
 }
 

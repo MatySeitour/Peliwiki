@@ -3,12 +3,10 @@ import { useEffect, useState } from "react";
 import { RankedMovie } from "../RankedMovie";
 import axios from "axios";
 import { API_KEY } from "../secret";
-import { useThemeContext } from "../Context/ThemeContext";
 
 function Ranked({ loading, setLoading }) {
     const [moviesRated, setMoviesRated] = useState([])
 
-    const { theme } = useThemeContext()
 
     useEffect(() => {
 

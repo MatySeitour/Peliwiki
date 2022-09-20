@@ -34,7 +34,8 @@
 
 .season-option__default{
     width: 50%;
-    height: 30px;
+    height: auto;
+    min-height: 30px;
     padding-left: 10px;
     display: flex;
     justify-content: space-between;

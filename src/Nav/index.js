@@ -59,10 +59,7 @@ function Nav() {
     return (
         <nav className={`nav ${showFixed && `nav-fixed`}`}>
             <div className="nav-container">
-                <NavBar
-                    navActive={navActive}
-                    navState={state.nav}
-                />
+                <NavBar />
                 <Logo />
                 <NavSearch
                     searchState={state.search}

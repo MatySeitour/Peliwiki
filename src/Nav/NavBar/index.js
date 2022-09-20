@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import ThemeContext from "../../Context/ThemeContext";
 import "./NavBar.css"
 
 function NavBar({ navActive, navState }) {
-    return [
-        <span onClick={navActive} className="icon-bar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z" /></svg></span>,
 
-        <div className={`${!navState ? `nav-active` : `nav-inactive`}`}>
+    const themeContext = useContext(ThemeContext);
+    const { stateNav, setStateNav } = themeContext
+
+    return [
+        <span onClick={() => setStateNav(!stateNav)} className="icon-bar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z" /></svg></span>,
+
+        <div className={`${!stateNav ? `nav-active` : `nav-inactive`}`}>
 
             <div className="exit">
-                <button onClick={navActive}>x</button>
+                <button onClick={() => setStateNav(!stateNav)}>x</button>
             </div>
             <div className="nav-active__container">
                 <div className="nav-items">
@@ -27,13 +33,13 @@ function NavBar({ navActive, navState }) {
 
                 </div>
 
-                <div className="nav-items">
+                <Link to={`/genre/`} className="nav-items" onClick={() => setStateNav(!stateNav)}>
                     <div className="nav-items__container">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M326.1 160l127.4-127.4C451.7 32.39 449.9 32 448 32h-86.06l-128 128H326.1zM166.1 160l128-128H201.9l-128 128H166.1zM497.7 56.19L393.9 160H512V96C512 80.87 506.5 67.15 497.7 56.19zM134.1 32H64C28.65 32 0 60.65 0 96v64h6.062L134.1 32zM0 416c0 35.35 28.65 64 64 64h384c35.35 0 64-28.65 64-64V192H0V416z" /></svg>
-                        <p>CATEG<b>ORIES</b></p>
+                        <p>GEN<b>RES</b></p>
                     </div>
 
-                </div>
+                </Link>
 
                 <div className="nav-items">
                     <div className="nav-items__container">
