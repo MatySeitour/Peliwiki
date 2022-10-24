@@ -18,6 +18,9 @@ import { Home } from '../Home';
 
 
 function App() {
+  const idKeyContext = 1;
+
+
   const [movieDetail, setMovieDetail] = useState({
     image: false,
     title: "",
@@ -30,7 +33,7 @@ function App() {
   const [imageDetail, setImageDetail] = useState("");
 
   return [
-    <ThemeContextProvider>
+    <ThemeContextProvider key={idKeyContext}>
       <BrowserRouter>
         <Header
           movieDetail={movieDetail}
@@ -59,7 +62,7 @@ function App() {
           <Route exact path='*' element={<NotFound />} />
 
           <Route exact path='/series/:id' element={<SeriesDetails />} />
-          <Route exact path='/genre/' element={<Genres />} />
+          <Route exact path='/genres/' element={<Genres />} />
 
         </Routes>
       </BrowserRouter>,

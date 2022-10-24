@@ -14,6 +14,7 @@ function SearchSection() {
     const [inputSearch, setInputSearch] = useState(input)
     const [maxPages, setMaxPages] = useState(true)
 
+    const idKeySearch = 1;
 
     useEffect(() => {
         async function getSearchMovies() {
@@ -43,7 +44,7 @@ function SearchSection() {
 
 
     return [
-        <section className="search-section">
+        <section key={idKeySearch} className="search-section">
             <h2 className="title-search">SEA<b>RCH </b>RESU<b>LTS</b> F<b>OR</b> {input}</h2>
             <InfiniteScroll dataLength={resultsSearch.length} hasMore={maxPages} next={() => setPage((prevPage) => prevPage + 1)}>
                 <ul className="trends-list">

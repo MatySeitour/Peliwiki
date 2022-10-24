@@ -11,15 +11,17 @@ function BelongColection({ belongMovies, movieId }) {
         window.scrollTo(0, 0)
 
         async function getBelong() {
-            try {
-                const rest = await axios.get(`https://api.themoviedb.org/3/collection/${belongMovies}?api_key=` + API_KEY);
-                setBelong({
-                    ...belong,
-                });
-                setBelong(rest.data.parts);
-            }
-            catch (error) {
-                console.log(error);
+            if (belongMovies !== null) {
+                try {
+                    const rest = await axios.get(`https://api.themoviedb.org/3/collection/${belongMovies}?api_key=` + API_KEY);
+                    setBelong({
+                        ...belong,
+                    });
+                    setBelong(rest.data.parts);
+                }
+                catch (error) {
+                    console.error(error);
+                }
             }
         }
         getBelong();

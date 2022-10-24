@@ -8,8 +8,10 @@ function RankedMovie({ title, movieImage, rating, rankedId }) {
 
     const screen = useIntersection(ref);
 
+    const idsKeyRankedMovie = 1
+
     return [
-        <article ref={ref}>
+        <article key={idsKeyRankedMovie} ref={ref}>
             {
                 screen && <>
                     < Link to={`/movie/${rankedId}`} className="ranked-movie_container" >

@@ -12,6 +12,7 @@ function Episodes({ seasonNumber, seasonListSelect, seasonName }) {
         seasonName: "",
     })
 
+
     useEffect(() => {
         seasonNumber.map((season) => {
             if (season.name === seasonListSelect) {
@@ -31,41 +32,79 @@ function Episodes({ seasonNumber, seasonListSelect, seasonName }) {
 
     }, [id, seasonNumber, seasonListSelect])
 
-    if (seasonListSelect === "Select Season") {
-        return (
-            <div></div>
-        )
-    }
+    return (
+        <div>
+            {seasonListSelect === "Select Season" ?
+                <>
+                    <p></p>
+                </>
+                :
+                <>
+                    <div className="season-title__container">
+                        <h3>
+                            {seasonName + ": " + episodes.seasonName}
+                        </h3>
+                    </div>,
+                    <ul className="episodes-container">
+                        {episodes.chapters.map((episode) => (
+                            <EpisodeSeason
+                                key={episode.id}
+                                episodeTitle={episode.name}
+                                episodeImage={episode.still_path}
+                                episodeChapter={episode.episode_number}
+                            />
+                        ))
+                        }
+                    </ul>
+                    <div className="episodes-container">
+                        <div className="episode-container">
+                            <div className="episode-image"></div>
+                            <div className="episode-details">
+                                <h4></h4>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            }
+        </div>
+    )
 
-    else {
-        return [
-            <div className="season-title__container">
-                <h3>
-                    {seasonName + ": " + episodes.seasonName}
-                </h3>
-            </div>,
-            <ul className="episodes-container">
-                {episodes.chapters.map((episode) => (
-                    <EpisodeSeason
-                        key={episode.id}
-                        episodeTitle={episode.name}
-                        episodeImage={episode.still_path}
-                        episodeChapter={episode.episode_number}
-                    />
-                ))
-                }
-            </ul>
-            // <div className="episodes-container">
-            //     <div className="episode-container">
-            //         <div className="episode-image"></div>
-            //         <div className="episode-details">
-            //             <h4></h4>
-            //             <p></p>
-            //         </div>
-            //     </div>
-            // </div>
-        ]
-    }
+    // if (seasonListSelect === "Select Season") {
+    //     return (
+    //         <div></div>
+    //     )
+    // }
+
+    // else {
+    //     return [
+    // <div className="season-title__container">
+    //     <h3>
+    //         {seasonName + ": " + episodes.seasonName}
+    //     </h3>
+    // </div>,
+    // <ul className="episodes-container">
+    //     {episodes.chapters.map((episode) => (
+    //         <EpisodeSeason
+    //             key={episode.id}
+    //             episodeTitle={episode.name}
+    //             episodeImage={episode.still_path}
+    //             episodeChapter={episode.episode_number}
+    //         />
+    //     ))
+    //     }
+    // </ul>
+    // <div className="episodes-container">
+    //     <div className="episode-container">
+    //         <div className="episode-image"></div>
+    //         <div className="episode-details">
+    //             <h4></h4>
+    //             <p></p>
+    //         </div>
+    //     </div>
+    // </div>
+    //     ]
+    // }
 
 }
 

@@ -44,15 +44,23 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    padding-left: 10px;
     align-items: center;
     border-bottom: 1px solid #fff;
 }
 
+.nav-items__active{
+    background-color: #fff;
+}
+
 .nav-items__container{
     display: flex;
-    justify-content: center;
-    height: auto;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 700;
 }
 
 .nav-items__container b{

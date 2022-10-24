@@ -7,15 +7,17 @@ import "./TrendsImg.css"
 
 function TrendsImg({ image, title, loading, rating, movieDetail, setMovieDetail, imageDetail, setImageDetail, movieId }) {
     const ref = useRef(null);
-
-
     const screen = useIntersection(ref);
 
-
+    const trendsImgKeys = [
+        {
+            id: 1
+        },
+    ]
 
     if (!loading) {
         return [
-            <article className="article-trends" ref={ref} >
+            <article key={trendsImgKeys[0].id} className="article-trends" ref={ref} >
                 <li className="trends-movies__container">
                     {
                         screen && <>
