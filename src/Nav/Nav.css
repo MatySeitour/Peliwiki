@@ -6,13 +6,9 @@
     z-index: 1000;
     position: relative;
     transition: 0.7s;
+    position: fixed;
 }
 
-.nav-fixed{
-    position: fixed;
-    background-color: blue;
-    transition: 0.7s;
-}
 
 .nav-container{
     padding: 0 16px;

@@ -8,11 +8,6 @@ import { NotFound } from '../NotFound';
 import { Genres } from '../Genres';
 import { ThemeContextProvider } from '../Context/ThemeContext';
 import { Footer } from '../Footer';
-import { FooterContainer } from '../Footer/FooterContainer';
-import { SocialMedias } from '../SocialMeidas';
-import { SocialMediasContainer } from '../SocialMeidas/SocialMediasContainer';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInstagram, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { useState } from 'react';
 import { Home } from '../Home';
 
@@ -62,10 +57,13 @@ function App() {
           <Route exact path='*' element={<NotFound />} />
 
           <Route exact path='/series/:id' element={<SeriesDetails />} />
+          <Route exact path='/genres/:genre_name' element={<Genres />} />
           <Route exact path='/genres/' element={<Genres />} />
 
         </Routes>
-      </BrowserRouter>,
+
+        <Footer />
+      </BrowserRouter>
     </ThemeContextProvider>
 
     // <Main
@@ -75,36 +73,6 @@ function App() {
     // />,
 
 
-
-    // <Footer>
-
-    //   <FooterContainer>
-
-    //     <SocialMedias>
-
-    //       <SocialMediasContainer>
-
-    //         <FontAwesomeIcon icon={faTwitter} />
-
-    //       </SocialMediasContainer>
-
-    //       <SocialMediasContainer>
-
-    //         <FontAwesomeIcon icon={faWhatsapp} />
-
-    //       </SocialMediasContainer>
-
-    //       <SocialMediasContainer>
-
-    //         <FontAwesomeIcon icon={faInstagram} />
-
-    //       </SocialMediasContainer>
-
-    //     </SocialMedias>
-
-    //   </FooterContainer>
-
-    // </Footer>
 
   ];
 }

@@ -34,7 +34,6 @@
     flex-direction: column;
     justify-content: flex-start;
     overflow: hidden;
-    padding: 6px;
 }
 
 .nav-items{
@@ -59,8 +58,8 @@
     height: 100%;
     width: 100%;
     font-size: 1.2rem;
-    color: white;
     font-weight: 700;
+    padding-left: 6px;
 }
 
 .nav-items__container b{

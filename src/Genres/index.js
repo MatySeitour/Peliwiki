@@ -3,13 +3,23 @@ import { useEffect, useState } from "react"
 import { API_KEY } from "../secret"
 import "./Genres.css"
 import { GenreMovies } from "../GenreMovies"
+import { useParams } from "react-router-dom"
 
 function Genres() {
+    const { genre_name } = useParams()
     const [genresList, setGenresList] = useState([]);
     const [genreListSelect, setGenreListSelect] = useState("");
-    const [genreSelect, setGenreSelect] = useState("");
+    const [genreSelect, setGenreSelect] = useState(() => {
+        if (genre_name == undefined) {
+            return "";
+        }
+        else {
+            return genre_name
+        }
+    });
     const [genreId, setGenreId] = useState(null)
     const [moviesByGenre, setMoviesByGenre] = useState([])
+    console.log(genre_name)
     const idsKeyGenres = [
         {
             id: 1,
@@ -22,11 +32,29 @@ function Genres() {
     useEffect(() => {
         async function getGenresList() {
             const res = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`)
-            setGenresList(res.data.genres)
+            setGenresList(() => {
+                if (genreSelect !== "") {
+                    const idForA = res.data.genres.filter(name => genreSelect === name.name)
+                    setGenreId(idForA[0].id)
+                    return res.data.genres
+                }
+                return res.data.genres
+
+            })
         }
 
         getGenresList();
     }, [])
+
+    useEffect(() => {
+        if (!genresList) {
+            console.log(genresList)
+            if (genreSelect !== "" && genresList !== []) {
+                const idForA = genresList.filter(name => genreSelect === name.name)
+                console.log(idForA)
+            }
+        }
+    }, [genresList])
 
     useEffect(() => {
         if (genreId !== null) {

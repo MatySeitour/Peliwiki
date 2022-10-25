@@ -57,7 +57,7 @@ function Nav() {
     })
 
     return (
-        <nav className={`nav ${showFixed && `nav-fixed`}`}>
+        <nav className={`nav`}>
             <div className="nav-container">
                 <NavBar />
                 <Logo />
