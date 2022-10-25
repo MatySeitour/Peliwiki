@@ -18,7 +18,6 @@ body {
 
 #root{
   width: 100%;
-  height: 100%;
   background-color: #f40000;
   opacity: 1;
   background: linear-gradient(290deg, #f60404, 10% ,rgba(0, 0, 0, 1));
