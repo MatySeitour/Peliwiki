@@ -22,14 +22,6 @@ function TrendsImg({ image, title, loading, rating, movieDetail, setMovieDetail,
                     {
                         screen && <>
                             <Link to={`/movie/${movieId}`}
-                                // onClick={() => {
-                                //     setImageDetail(image)
-                                //     setMovieDetail({
-                                //         ...movieDetail,
-                                //         image: true,
-                                //         title: { title }
-                                //     });
-                                // }}
                                 className="trends-img__container">
                                 <img alt={title} className="trends-img" src={"https://image.tmdb.org/t/p/w500/" + image} />
                                 <div className="trends-info__container">

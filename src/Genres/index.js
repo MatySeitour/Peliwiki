@@ -9,11 +9,13 @@ function Genres() {
     const { genre_name } = useParams()
     const [genresList, setGenresList] = useState([]);
     const [genreListSelect, setGenreListSelect] = useState("");
+    const [loadingGenreMovies, setLoadingGenreMovies] = useState(false);
     const [genreSelect, setGenreSelect] = useState(() => {
         if (genre_name == undefined) {
             return "";
         }
         else {
+            setLoadingGenreMovies(true)
             return genre_name
         }
     });
@@ -36,6 +38,7 @@ function Genres() {
                 if (genreSelect !== "") {
                     const idForA = res.data.genres.filter(name => genreSelect === name.name)
                     setGenreId(idForA[0].id)
+                    setLoadingGenreMovies(false)
                     return res.data.genres
                 }
                 return res.data.genres
@@ -46,21 +49,13 @@ function Genres() {
         getGenresList();
     }, [])
 
-    useEffect(() => {
-        if (!genresList) {
-            console.log(genresList)
-            if (genreSelect !== "" && genresList !== []) {
-                const idForA = genresList.filter(name => genreSelect === name.name)
-                console.log(idForA)
-            }
-        }
-    }, [genresList])
 
     useEffect(() => {
         if (genreId !== null) {
             async function getMovieByGenre() {
                 const res = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&&with_genres=${genreId}`)
                 setMoviesByGenre(res.data.results)
+                console.log("a")
             }
 
             getMovieByGenre();
@@ -98,7 +93,10 @@ function Genres() {
                 ))}
             </ul>
 
-            <GenreMovies movies={moviesByGenre} />
+            <GenreMovies
+                movies={moviesByGenre}
+                loadingGenreMovies={loadingGenreMovies}
+            />
         </section>
     ]
 }
