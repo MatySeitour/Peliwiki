@@ -2,7 +2,7 @@
     position: absolute;
     width: 90%;
     height: 60%;
-    background-color: #0007;
+    background-color: #000;
     top: 150%;
     display: flex;
     justify-content: space-between;
@@ -19,6 +19,7 @@
     height: 100%;
     border: none;
     background-color: #0000;
+    letter-spacing: 1px;
     color: white;
     font-size: 1.2rem;
     outline: none;
