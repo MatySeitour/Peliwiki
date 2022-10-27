@@ -28,7 +28,7 @@ function App() {
   const [imageDetail, setImageDetail] = useState("");
 
   return [
-    <>
+    <div key={3}>
       <div key={2} className='bg'></div>
       <div className='content'></div>
       <ThemeContextProvider key={idKeyContext}>
@@ -68,7 +68,7 @@ function App() {
           <Footer />
         </BrowserRouter>
       </ThemeContextProvider>
-    </>
+    </div>
 
   ];
 }
