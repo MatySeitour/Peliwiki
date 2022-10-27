@@ -29,9 +29,6 @@ function Footer() {
                         </a>
                     </div>
                 </div>
-                <div>
-                    MatySeitour
-                </div>
                 <div className="footer-nav__container">
                     <Link to={"/"} onClick={() => window.scrollTo(0, 0)} className="footer-nav__item">Home</Link>
                     <Link to={"/genres/"} onClick={() => window.scrollTo(0, 0)} className="footer-nav__item">Genres</Link>

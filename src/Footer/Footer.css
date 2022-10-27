@@ -69,4 +69,7 @@
     letter-spacing: 2px;
     border-bottom: 1px solid #fff;
     color: #fff;
+    min-width: 60px;
+    max-width: 60px;
+    text-align: center;
 }
