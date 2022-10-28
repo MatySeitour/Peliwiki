@@ -4,12 +4,15 @@ import { API_KEY } from "../secret"
 import "./Genres.css"
 import { GenreMovies } from "../GenreMovies"
 import { useParams } from "react-router-dom"
+import InfiniteScroll from "react-infinite-scroll-component"
 
 function Genres() {
     const { genre_name } = useParams()
     const [genresList, setGenresList] = useState([]);
     const [genreListSelect, setGenreListSelect] = useState("");
     const [loadingGenreMovies, setLoadingGenreMovies] = useState(false);
+    const [pageGenre, setPageGenre] = useState(1);
+    const [maxPageGenre, setMaxPageGenre] = useState(true);
     const [genreSelect, setGenreSelect] = useState(() => {
         if (genre_name == undefined) {
             return "";
@@ -37,8 +40,8 @@ function Genres() {
             setGenresList(() => {
                 if (genreSelect !== "") {
                     const idForA = res.data.genres.filter(name => genreSelect === name.name)
-                    setGenreId(idForA[0].id)
                     setLoadingGenreMovies(false)
+                    setGenreId(idForA[0].id)
                     return res.data.genres
                 }
                 return res.data.genres
@@ -53,16 +56,19 @@ function Genres() {
     useEffect(() => {
         if (genreId !== null) {
             async function getMovieByGenre() {
-                const res = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&&with_genres=${genreId}`)
-                setMoviesByGenre(res.data.results)
-                console.log("a")
+                const res = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&&with_genres=${genreId}&&page=${pageGenre}`)
+                setMoviesByGenre((prevMovies) => (
+                    prevMovies.concat(res.data.results)
+                ))
+                setMaxPageGenre(res.data.page < res.data.total_pages);
+                setLoadingGenreMovies(false)
             }
 
             getMovieByGenre();
         }
 
 
-    }, [genreId])
+    }, [genreId, pageGenre])
 
 
     return [
@@ -84,6 +90,8 @@ function Genres() {
             <ul className={`genres-option__container ${genreListSelect && `genres-option__active`}`}>
                 {genresList.map((genre) => (
                     <li key={genre.id} onClick={() => {
+                        setLoadingGenreMovies(true)
+                        setMoviesByGenre([])
                         setGenreSelect(genre.name)
                         setGenreListSelect("")
                         setGenreId(genre.id)
@@ -93,10 +101,13 @@ function Genres() {
                 ))}
             </ul>
 
-            <GenreMovies
-                movies={moviesByGenre}
-                loadingGenreMovies={loadingGenreMovies}
-            />
+            <InfiniteScroll dataLength={moviesByGenre.length} hasMore={maxPageGenre} next={() => setPageGenre((prevPage) => prevPage + 1)}>
+                <GenreMovies
+                    movies={moviesByGenre}
+                    loadingGenreMovies={loadingGenreMovies}
+                />
+            </InfiniteScroll>
+
         </section>
     ]
 }
